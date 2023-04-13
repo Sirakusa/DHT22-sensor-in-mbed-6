@@ -6,8 +6,8 @@ DigitalInOut dht22(PA_0);
 int elapsed_time_us;
 unsigned long int bits_Data = 0x00000000;
 unsigned long int bits_Data2 = 0x00000000;
-unsigned int temperature;
-unsigned int humidity;
+int temperature;
+int humidity;
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
 
         dht22.output();      
         dht22.write(0);
-        
+
         ThisThread::sleep_for(1ms);
         dht22.write(1);
         wait_us(20);
