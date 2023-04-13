@@ -12,8 +12,8 @@ public:
     void convertData();
 
 private:
-    void hostSignal(int bitSend);
-    void waitForResponse();
+    void hostSignal(int bitSend); // client starts the sensor and can end it
+    void waitForResponse();  // wait 80 microseconds down and wait 80 microseconds up
     void sampleData();
 
     Timer _timer;

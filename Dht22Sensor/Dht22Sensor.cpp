@@ -63,14 +63,16 @@ void Dht22Sensor::sampleData(){
 }
 
 void Dht22Sensor::convertData(){
+    
     Dht22Sensor::sampleData();
 
-    _bits_data2 = _bits_data & 0xFFFF0000;
+    _bits_data2 = _bits_data & 0xFFFF0000;  // mask a data
     _bits_data = _bits_data & 0x0000FFFF;
     
-    if ((_bits_data & 0x8000) == 0x8000) {
+    if ((_bits_data & 0x8000) == 0x8000) {  // identify bit indicating the sign of the temperature
         _bits_data *= -1;
     }
+
     _temperature = _bits_data / 10;
 
     _bits_data2 = _bits_data2 >> 16;
